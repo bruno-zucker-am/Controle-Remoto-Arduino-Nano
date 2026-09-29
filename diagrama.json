@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "author": "Bruno Zucker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-nano", "id": "nano", "top": -24, "left": -0.5, "attrs": {} },
+    { "type": "wokwi-ir-receiver", "id": "ir1", "top": -20.55, "left": -97.78, "attrs": {} },
+    { "type": "wokwi-ir-remote", "id": "remote1", "top": -57.6, "left": 230.4, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 51.95,
+      "left": 38.4,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 44.4,
+      "left": 196.2,
+      "attrs": { "color": "red", "flip": "1" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": 126.3,
+      "left": -4.1,
+      "attrs": { "distance": "317" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 243.95,
+      "left": -96,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 148.8,
+      "left": -125.35,
+      "rotate": 90,
+      "attrs": { "value": "2000" }
+    }
+  ],
+  "connections": [
+    [ "ir1:VCC", "nano:5V", "red", [ "v9.6", "h192" ] ],
+    [ "ir1:GND", "nano:GND.1", "black", [ "v19.2", "h220.8" ] ],
+    [ "led1:C", "nano:GND.2", "black", [ "v48", "h-19.2", "v-163.2", "h-48" ] ],
+    [ "ir1:DAT", "nano:2", "blue", [ "v28.8", "h48", "v-134.4", "h124.8" ] ],
+    [ "r3:2", "led1:A", "white", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "nano:5", "blue", [ "v19.2", "h-106", "v-288", "h115.2" ] ],
+    [ "ultrasonic1:VCC", "nano:5V", "red", [ "v0", "h-105.6", "v-115.2", "h163.2" ] ],
+    [ "ultrasonic1:GND", "nano:GND.1", "black", [ "v9.6", "h85.2", "v-115.2", "h-38.4" ] ],
+    [ "ultrasonic1:ECHO", "r1:2", "blue", [ "v0" ] ],
+    [ "r1:1", "r2:2", "blue", [ "v0" ] ],
+    [ "r2:1", "nano:GND.1", "black", [ "h0", "v-9.6", "h230.4", "v-38.4", "h19.2" ] ],
+    [ "r2:2", "nano:4", "blue", [ "h-19.2", "v-231.6", "h67.2", "v-9.6", "h124.8" ] ],
+    [ "r3:1", "nano:12", "white", [ "v0", "h-57.6", "v-96" ] ]
+  ],
+  "dependencies": {}
+}
